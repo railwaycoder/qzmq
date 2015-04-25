@@ -36,11 +36,11 @@ namespace QZmq {
 
 static int get_fd(void *sock)
 {
-	int fd;
+    long long fd;
 	size_t opt_len = sizeof(fd);
 	int ret = zmq_getsockopt(sock, ZMQ_FD, &fd, &opt_len);
 	assert(ret == 0);
-	return fd;
+    return (int)fd;
 }
 
 static void set_subscribe(void *sock, const char *data, int size)
